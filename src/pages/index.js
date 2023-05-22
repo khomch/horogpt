@@ -29,6 +29,7 @@ export default function Home() {
 
       setResult(data.result);
       setAnimalInput("");
+      setError(null);
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -54,7 +55,7 @@ export default function Home() {
           <input type="submit" value="Покажи гороскоп на месяц" />
         </form>
 
-        {buttonClicked && result === null && <div className={styles.loader}></div>}
+        {!error && buttonClicked && result === null && <div className={styles.loader}></div>}
         {error && <div className={styles.error}>Очень сложно, произошла ошибка, повторите запрос</div>}
 
         <div className={styles.result}>{result}</div>
