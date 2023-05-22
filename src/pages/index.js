@@ -1,13 +1,16 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
+import { log } from 'next/dist/server/typescript/utils';
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
-  const [result, setResult] = useState();
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const [result, setResult] = useState(null);
 
   async function onSubmit(event) {
     event.preventDefault();
+    setButtonClicked(true);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -30,6 +33,7 @@ export default function Home() {
       alert(error.message);
     }
   }
+  console.log(result)
   return (
     <div>
       <Head>
@@ -48,6 +52,9 @@ export default function Home() {
           />
           <input type="submit" value="Покажи гороскоп на июнь" />
         </form>
+
+        {buttonClicked && result === null && <div className={styles.result}>Загрузка...</div>}
+
         <div className={styles.result}>{result}</div>
       </main>
     </div>
