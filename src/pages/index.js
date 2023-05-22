@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
+import logo from "/public/static/img/icon.png";
+import Image from "next/image";
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
@@ -31,15 +33,17 @@ export default function Home() {
     }
   }
 
+  console.log(logo)
+
   return (
     <div>
       <Head>
         <title>Гороскопер</title>
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href={logo} />
       </Head>
 
       <main className={styles.main}>
-        <img src="/icon.png" className={styles.icon} />
+        <Image src={"/static/img/icon.png"} className={styles.icon} width={100} height={100} />
         <h3>Гороскопер</h3>
         <form onSubmit={onSubmit}>
           <input
