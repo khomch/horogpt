@@ -7,6 +7,7 @@ export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [buttonClicked, setButtonClicked] = useState(false);
   const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -31,10 +32,9 @@ export default function Home() {
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      setError(error);
     }
   }
-  console.log(result)
   return (
     <div>
       <Head>
@@ -51,10 +51,11 @@ export default function Home() {
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
           />
-          <input type="submit" value="Покажи гороскоп на июнь" />
+          <input type="submit" value="Покажи гороскоп на месяц" />
         </form>
 
         {buttonClicked && result === null && <div className={styles.loader}></div>}
+        {error && <div className={styles.error}>Очень сложно, произошла ошибка, повторите запрос</div>}
 
         <div className={styles.result}>{result}</div>
       </main>

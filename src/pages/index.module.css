@@ -68,6 +68,13 @@
   width: 300px;
 }
 
+.main .error {
+  font-weight: bold;
+  margin-top: 40px;
+  width: 300px;
+  color: #d26363;
+}
+
 .loader {
   margin-top: 40px;
   display: block;

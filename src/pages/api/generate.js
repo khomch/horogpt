@@ -28,7 +28,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(animal.trim()),
       temperature: 0.6,
       max_tokens: 300,
     });
@@ -54,5 +54,5 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Предложи гороскоп на июнь для  ${animal}. Ответ не более 140 символов.`;
+  return `Предложи гороскоп на месяц для  ${animal}. Ответ не более 140 символов.`;
 }
