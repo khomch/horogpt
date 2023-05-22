@@ -10,6 +10,7 @@ export default function Home() {
 
   async function onSubmit(event) {
     event.preventDefault();
+    setResult(null);
     setButtonClicked(true);
     try {
       const response = await fetch("/api/generate", {
@@ -53,7 +54,7 @@ export default function Home() {
           <input type="submit" value="Покажи гороскоп на июнь" />
         </form>
 
-        {buttonClicked && result === null && <div className={styles.result}>Загрузка...</div>}
+        {buttonClicked && result === null && <div className={styles.loader}></div>}
 
         <div className={styles.result}>{result}</div>
       </main>
