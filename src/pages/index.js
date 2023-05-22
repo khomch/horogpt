@@ -43,7 +43,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Image src={"/static/img/icon.png"} className={styles.icon} width={100} height={100} />
+        <Image src={logo} className={styles.icon} width={100} height={100} />
         <h3>Гороскопер</h3>
         <form onSubmit={onSubmit}>
           <input
