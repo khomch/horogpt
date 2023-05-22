@@ -13,6 +13,7 @@ export default function Home() {
     event.preventDefault();
     setResult(null);
     setButtonClicked(true);
+    setError(null)
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
